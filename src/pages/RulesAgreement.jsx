@@ -1,6 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function RulesAgreement() {
+  const navigate = useNavigate()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    navigate("/domain_info")
+  }
   return (
     <section class="w-full flex gap-5">
       <div class="bg-white h-1/2 w-1/12 px-4 py-4">
@@ -15,9 +21,9 @@ function RulesAgreement() {
           Select Language
         </button>
       </div>
-      <div class="w-11/12 bg-lime-100 px-10 pt-10">
+      <div class="w-11/12 bg-amber-100 px-10 pt-10">
         <h1 class="font-bold text-lg">Agreement.</h1>
-        <form action="POST">
+        <form onSubmit={handleSubmit}>
           <p class="w-2/4 text-justify">
             First, RHCSA exam participants are expected to adhere to the
             security and integrity regulations of the exam. This includes a

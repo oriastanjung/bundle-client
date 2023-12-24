@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Registration() {
   const [form, setForm] = useState({
@@ -19,7 +20,7 @@ function Registration() {
       [name]: type === "checkbox" ? checked : value,
     }));
   };
-
+  const router = useNavigate()
   const handleSubmit = async (e) => {
     e.preventDefault();
     // Add your form submission logic here, e.g., send data to the server
@@ -27,6 +28,8 @@ function Registration() {
 
     const submit = await axios.post("http://localhost:3000/saveFormData", form);
     // alert("tersimpan!")
+
+    router("/rules_agreement")
   };
 
   return (
@@ -43,7 +46,7 @@ function Registration() {
           Select Language
         </button>
       </div>
-      <div class="w-11/12 bg-lime-100 px-10 pt-10">
+      <div class="w-11/12 bg-amber-100 px-10 pt-10">
         <h1 class="font-bold text-lg">
           Enter the information requested below then click on 'Submit'.
         </h1>
